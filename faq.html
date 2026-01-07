@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Как это работает — Выход из сумрака</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0d0f14;
+      --text: #e6e6e6;
+      --accent: #f5c77a;
+      --menu-bg: #0a0c0f;
+      --border: #222;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.7;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .header {
+      position: sticky;
+      top: 0;
+      background: var(--menu-bg);
+      border-bottom: 1px solid var(--border);
+      padding: 0 20px;
+      z-index: 100;
+    }
+    .menu {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 60px;
+    }
+    .logo {
+      font-weight: bold;
+      font-size: 1.25rem;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 24px;
+    }
+    .nav-links a {
+      color: #aaa;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--accent);
+    }
+    .container {
+      max-width: 800px;
+      margin: 60px auto;
+      padding: 0 20px;
+      flex: 1;
+    }
+    h1 {
+      color: var(--accent);
+      margin-bottom: 30px;
+      font-size: 2.2rem;
+      text-align: center;
+    }
+    h2 {
+      color: var(--accent);
+      margin: 32px 0 16px;
+      font-size: 1.5rem;
+    }
+    p, li {
+      margin-bottom: 16px;
+      font-size: 1.05rem;
+      opacity: 0.95;
+    }
+    ul {
+      padding-left: 25px;
+      margin: 16px 0 24px;
+    }
+    li {
+      margin-bottom: 10px;
+    }
+    .note {
+      background: #14171a;
+      padding: 20px;
+      border-left: 3px solid var(--accent);
+      margin: 24px 0;
+      border-radius: 0 6px 6px 0;
+    }
+    footer {
+      background: #07080a;
+      color: #777;
+      font-size: 0.9rem;
+      padding: 30px 20px;
+      text-align: center;
+      margin-top: 80px;
+    }
+    .social-links {
+      margin-bottom: 15px;
+    }
+    .social-links a {
+      color: #777;
+      margin: 0 16px;
+      text-decoration: none;
+    }
+    .footer-text a {
+      color: var(--accent);
+      text-decoration: underline;
+      font-size: 0.85rem;
+    }
+    @media (max-width: 768px) {
+      h1 { font-size: 1.8rem; }
+      h2 { font-size: 1.35rem; }
+      .menu { padding: 0 15px; }
+      .nav-links { gap: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <nav class="menu">
+      <a href="index.html" class="logo">Выход из сумрака</a>
+      <div class="nav-links">
+        <a href="privacy.html">Политика</a>
+        <a href="faq.html" class="active">Как это работает</a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h1>Как это работает</h1>
+
+    <p>Это не курс. Не марафон. Не мотивационный тренинг.</p>
+    <p>Это <strong>ежедневная практика</strong>, которая помогает выйти из информационного шума и вернуть себе ясность, направление и действия.</p>
+
+    <h2>Кто это для?</h2>
+    <p>Для тех, кто:</p>
+    <ul>
+      <li>устал от бесконечных статей, видео и советов</li>
+      <li>чувствует, что «застрял»</li>
+      <li>хочет начать, но не знает — с чего</li>
+      <li>готов честно взглянуть на себя</li>
+    </ul>
+
+    <h2>Как устроен процесс?</h2>
+    <p>Каждый <strong>будний день (пн–пт)</strong> в 9:00 вы получаете одно простое задание в Telegram.</p>
+    <p>Задание занимает <strong>2–10 минут</strong>. Оно не требует специальных знаний — только честного ответа или действия.</p>
+    <p>Выходные (сб–вс) — время отдыха. Без заданий. Без штрафов.</p>
+
+    <h2>Что такое Synops?</h2>
+    <p>Synops — это <strong>внутренняя валюта прогресса</strong>. Она помогает видеть, что вы идёте вперёд.</p>
+    <ul>
+      <li>За выполненное задание: <strong>+10 Synops</strong></li>
+      <li>За пропуск одного дня — ничего не снимается</li>
+      <li>Если пропустить <strong>два будних дня подряд</strong> — <strong>–15 Synops</strong></li>
+    </ul>
+    <p>Это не наказание. Это способ мягко напомнить: «Ты здесь. Ты можешь вернуться».</p>
+
+    <h2>Как подтвердить выполнение?</h2>
+    <p>Бот принимает:</p>
+    <ul>
+      <li><strong>Текстовый ответ</strong> — просто напишите в чат</li>
+      <li><strong>Скриншот или фото</strong> — если задание требует (например, «сделай фото своего рабочего стола»)</li>
+    </ul>
+    <p>Нет сложных форм. Нет загрузок файлов. Только Telegram.</p>
+
+    <h2>Сколько стоит?</h2>
+    <div class="note">
+      Участие <strong>полностью бесплатное</strong>. Нет скрытых платежей, подписок или «премиум-доступа».
+    </div>
+    <p>Это практика, а не продукт. Цель — помочь, а не продать.</p>
+
+    <h2>Сколько длится?</h2>
+    <p>Год. Точнее — <strong>261 рабочий день</strong> (примерно 5 дней × 52 недели).</p>
+    <p>Каждый месяц посвящён новой теме: от осознания до интеграции изменений.</p>
+    <p>Вы можете выйти в любой момент — без штрафов, без обязательств.</p>
+
+    <h2>Что, если я пропущу день?</h2>
+    <p>Это нормально. Жизнь бывает сложной.</p>
+    <p>Один пропуск — ничего не снимается.</p>
+    <p>Если пропустите два дня подряд — вы получите уведомление и –15 Synops. Но вы всегда можете продолжить.</p>
+
+    <h2>Зачем это всё?</h2>
+    <p>Чтобы:</p>
+    <ul>
+      <li>перестать гнаться за информацией</li>
+      <li>начать <strong>действовать</strong>, а не только думать</li>
+      <li>обратить внимание на то, что действительно важно</li>
+      <li>найти свою внутреннюю опору</li>
+    </ul>
+    <p>Это не волшебная кнопка. Это путь. И он начинается с одного шага.</p>
+  </div>
+
+  <footer>
+    <div class="social-links">
+      <a href="https://vk.com/ваш_паблик" target="_blank">VK</a>
+      <a href="https://ok.ru/ваш_профиль" target="_blank">OK</a>
+      <a href="https://t.me/ваш_канал" target="_blank">Telegram</a>
+    </div>
+    <div class="footer-text">
+      © 2016–2025 | Разработка и продвижение сайтов<br>
+      <a href="privacy.html">Политика конфиденциальности</a>
+    </div>
+  </footer>
+
+</body>
+</html>
