@@ -19,7 +19,6 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       line-height: 1.6;
     }
-    /* === Меню, сдвинутое влево === */
     .header {
       position: sticky;
       top: 0;
@@ -46,6 +45,7 @@
     .nav-links {
       display: flex;
       gap: 20px;
+      align-items: center;
     }
     .nav-links a {
       color: #aaa;
@@ -56,21 +56,21 @@
     .nav-links a:hover {
       color: var(--accent);
     }
-    .lang-switch {
+    .lang-switch-inline {
       display: flex;
-      gap: 12px;
+      gap: 10px;
+      margin: 0 8px;
     }
-    .lang-switch a {
+    .lang-switch-inline a {
       color: #555;
-      text-decoration: none;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: bold;
+      text-decoration: none;
     }
-    .lang-switch a.active {
+    .lang-switch-inline a.active {
       color: var(--accent);
     }
 
-    /* === Контент === */
     .container {
       max-width: 800px;
       margin: 0 auto;
@@ -144,7 +144,6 @@
       margin-top: 12px;
     }
 
-    /* === Подвал === */
     footer {
       background: #07080a;
       color: #777;
@@ -164,30 +163,28 @@
       font-size: 0.85rem;
     }
 
-    /* === Адаптив === */
     @media (max-width: 768px) {
       h1 { font-size: 2.1rem; }
       h2 { font-size: 1.6rem; }
       .btn { padding: 12px 32px; font-size: 1.1rem; }
     }
     @media (max-width: 600px) {
-      .lang-switch { display: none; }
+      .lang-switch-inline { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Меню с переключателем языка -->
   <header class="header">
     <nav class="menu">
       <a href="index.html" class="logo">Выход из сумрака</a>
       <div class="nav-links">
+        <div class="lang-switch-inline">
+          <a href="#" class="lang-btn active" data-lang="ru">RU</a>
+          <a href="#" class="lang-btn" data-lang="en">EN</a>
+        </div>
         <a href="privacy.html">Политика</a>
-        <a href="faq.html">Как это работает</a>
-      </div>
-      <div class="lang-switch">
-        <a href="#" class="lang-btn active" data-lang="ru">RU</a>
-        <a href="#" class="lang-btn" data-lang="en">EN</a>
+        <a href="faq.html">FAQ</a>
       </div>
     </nav>
   </header>
@@ -251,7 +248,6 @@
     </div>
   </footer>
 
-  <!-- Языковой переключатель -->
   <script>
     const content = {
       ru: {
@@ -333,16 +329,12 @@
       setText('block6-text', c.block6_text);
       setText('fine-print', c.fine_print);
 
-      // Обновляем активный язык
       document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.lang === lang);
       });
-
-      // Сохраняем выбор
       localStorage.setItem('lang', lang);
     }
 
-    // Переключение по клику
     document.querySelectorAll('.lang-btn').forEach(btn => {
       btn.addEventListener('click', e => {
         e.preventDefault();
@@ -350,7 +342,6 @@
       });
     });
 
-    // Загрузка при старте
     const savedLang = localStorage.getItem('lang') || (navigator.language.startsWith('ru') ? 'ru' : 'en');
     render(savedLang);
   </script>
