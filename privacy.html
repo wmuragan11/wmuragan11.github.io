@@ -1,1 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Политика конфиденциальности — Выход из сумрака</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background-color: #0d0f14;
+      color: #e6e6e6;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.7;
+    }
+    /* Меню — точно такое же */
+    .top-menu {
+      background: #0a0c0f;
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #222;
+    }
+    .logo { font-weight: bold; color: #f5c77a; text-decoration: none; font-size: 1.2rem; }
+    .nav-links a {
+      color: #aaa;
+      text-decoration: none;
+      margin-left: 20px;
+    }
+    .nav-links a:hover { color: #f5c77a; }
+    .lang-switch { display: none; } /* На privacy.html язык не переключаем */
 
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    h1 {
+      color: #f5c77a;
+      margin-bottom: 30px;
+      font-size: 2rem;
+    }
+    p {
+      margin-bottom: 20px;
+      font-size: 1.05rem;
+    }
+    ul {
+      margin: 15px 0 20px;
+      padding-left: 25px;
+    }
+    li {
+      margin-bottom: 8px;
+    }
+    a {
+      color: #f5c77a;
+      text-decoration: underline;
+    }
+
+    footer {
+      background: #07080a;
+      color: #777;
+      font-size: 0.9rem;
+      padding: 30px 20px;
+      margin-top: 60px;
+      text-align: center;
+    }
+    .social-links a {
+      color: #777;
+      margin: 0 12px;
+      text-decoration: none;
+    }
+    .footer-text {
+      margin-top: 15px;
+    }
+    .footer-text a {
+      color: #f5c77a;
+      text-decoration: underline;
+      font-size: 0.85rem;
+    }
+    @media (max-width: 600px) {
+      .top-menu { flex-direction: column; gap: 10px; text-align: center; }
+      .nav-links { margin-top: 8px; }
+      .nav-links a { margin: 0 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- То же меню -->
+  <nav class="top-menu">
+    <a href="index.html" class="logo">Выход из сумрака</a>
+    <div class="nav-links">
+      <a href="privacy.html">Политика конфиденциальности</a>
+    </div>
+    <div class="lang-switch">
+      <a href="#" class="lang-btn active" data-lang="ru">RU</a>
+      <a href="#" class="lang-btn" data-lang="en">EN</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1>Политика конфиденциальности</h1>
+
+    <p>Сайт и связанные с ним сервисы (включая Telegram-бота «Выход из сумрака») созданы с уважением к вашей личной границе и праву на приватность.</p>
+
+    <p><strong>1. Сбор данных через лендинг</strong><br>
+    На этом сайте не используются системы аналитики, куки или скрипты отслеживания. Мы не собираем IP-адреса, не храним историю посещений и не передаём информацию третьим лицам.</p>
+
+    <p><strong>2. Данные в Telegram-боте</strong><br>
+    Если вы переходите в Telegram-бот, вы добровольно предоставляете имя, Telegram-ник и, при запросе, — цель, email и телефон. Эти данные используются исключительно для:
+    <ul>
+      <li>персонализации ежедневных заданий,</li>
+      <li>отправки напоминаний,</li>
+      <li>поддержки внутренней системы прогресса (Synops).</li>
+    </ul>
+    Ваши сообщения в боте не публикуются и не передаются вне системы.</p>
+
+    <p><strong>3. Ваши права</strong><br>
+    Вы в любой момент можете:
+    <ul>
+      <li>отказаться от участия,</li>
+      <li>запросить удаление своих данных,</li>
+      <li>отписаться от уведомлений.</li>
+    </ul>
+    Для этого достаточно написать в Telegram: <a href="https://t.me/ваш_ник">@ваш_ник</a>.</p>
+
+    <p><strong>4. Изменения</strong><br>
+    Мы оставляем за собой право обновлять эту политику. Все изменения вступают в силу немедленно после публикации на этой странице.</p>
+
+    <p>Дата последнего обновления: 7 января 2026 г.</p>
+  </div>
+
+  <footer>
+    <div class="social-links">
+      <a href="https://vk.com/ваш_паблик" target="_blank">VK</a>
+      <a href="https://ok.ru/ваш_профиль" target="_blank">OK</a>
+      <a href="https://t.me/ваш_канал" target="_blank">Telegram</a>
+    </div>
+    <div class="footer-text">
+      © 2016–2025 | Разработка и продвижение сайтов
+    </div>
+  </footer>
+
+</body>
+</html>
