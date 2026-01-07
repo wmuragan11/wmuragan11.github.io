@@ -5,57 +5,113 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Как выйти из сумрака</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0d0f14;
+      --text: #e6e6e6;
+      --accent: #f5c77a;
+      --menu-bg: #0a0c0f;
+      --border: #222;
     }
     body {
-      background-color: #0d0f14;
-      color: #e6e6e6;
+      background-color: var(--bg);
+      color: var(--text);
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       line-height: 1.6;
-      padding-bottom: 60px;
     }
+    /* === Прилипающее меню === */
+    .header {
+      position: sticky;
+      top: 0;
+      background: var(--menu-bg);
+      border-bottom: 1px solid var(--border);
+      padding: 0 20px;
+      z-index: 100;
+    }
+    .menu {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 60px;
+    }
+    .logo {
+      font-weight: bold;
+      font-size: 1.25rem;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    /* === КНОПКИ МЕНЮ — расстояние здесь === */
+    .nav-links {
+      display: flex;
+      gap: 24px; /* ← расстояние между кнопками */
+    }
+    .nav-links a {
+      color: #aaa;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    /* === Переключатель языка === */
+    .lang-switch {
+      display: flex;
+      gap: 12px;
+    }
+    .lang-switch a {
+      color: #555;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: bold;
+    }
+    .lang-switch a.active {
+      color: var(--accent);
+    }
+
+    /* === Основной контент === */
     .container {
       max-width: 800px;
       margin: 0 auto;
       padding: 20px;
     }
-    header {
+    .hero {
       text-align: center;
-      padding: 60px 0 40px;
+      padding: 80px 0 60px;
     }
-    .hero-image {
+    .hero img {
       width: 100%;
       max-height: 400px;
       object-fit: cover;
       border-radius: 8px;
-      margin-bottom: 30px;
+      margin-bottom: 40px;
     }
-    h1 {
-      font-size: 2.4rem;
+    .hero h1 {
+      font-size: 2.5rem;
       margin-bottom: 16px;
     }
-    .subtitle {
-      font-size: 1.2rem;
+    .hero .subtitle {
+      font-size: 1.3rem;
       margin-bottom: 20px;
-      opacity: 0.9;
+      opacity: 0.95;
     }
-    .note {
-      font-size: 1rem;
-      margin-bottom: 30px;
-      opacity: 0.8;
+    .hero .note {
+      font-size: 1.1rem;
+      margin-bottom: 36px;
+      opacity: 0.85;
     }
     .btn {
       display: inline-block;
-      background-color: #f5c77a;
-      color: #0d0f14;
-      padding: 14px 32px;
+      background-color: var(--accent);
+      color: var(--bg);
+      padding: 14px 40px;
       text-decoration: none;
       font-weight: bold;
       border-radius: 6px;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       margin: 20px 0;
       transition: opacity 0.2s;
     }
@@ -63,67 +119,109 @@
       opacity: 0.9;
     }
     section {
-      margin: 50px 0;
+      margin: 60px 0;
       text-align: center;
     }
     h2 {
-      font-size: 1.8rem;
-      margin-bottom: 20px;
-      color: #f5c77a;
+      font-size: 1.9rem;
+      margin-bottom: 24px;
+      color: var(--accent);
     }
     p {
-      margin-bottom: 16px;
-      font-size: 1.1rem;
+      margin-bottom: 18px;
+      font-size: 1.15rem;
     }
     ul, ol {
       text-align: left;
-      margin: 20px auto;
-      padding-left: 20px;
-    }
-    li {
-      margin-bottom: 10px;
+      margin: 25px auto;
+      padding-left: 25px;
       font-size: 1.1rem;
     }
-    .fine-print {
-      font-size: 0.9rem;
-      opacity: 0.7;
-      margin-top: 10px;
+    li {
+      margin-bottom: 12px;
     }
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 2rem;
-      }
-      h2 {
-        font-size: 1.5rem;
-      }
-      .btn {
-        padding: 12px 24px;
-        font-size: 1rem;
-      }
+    .fine-print {
+      font-size: 0.95rem;
+      opacity: 0.75;
+      margin-top: 12px;
+    }
+
+    /* === Подвал === */
+    footer {
+      background: #07080a;
+      color: #777;
+      font-size: 0.9rem;
+      padding: 30px 20px;
+      text-align: center;
+      margin-top: 80px;
+    }
+    .social-links {
+      margin-bottom: 15px;
+    }
+    .social-links a {
+      color: #777;
+      margin: 0 16px;
+      text-decoration: none;
+    }
+    .footer-text a {
+      color: var(--accent);
+      text-decoration: underline;
+      font-size: 0.85rem;
+    }
+
+    /* === Адаптив === */
+    @media (max-width: 768px) {
+      .menu { padding: 0 15px; }
+      .hero h1 { font-size: 2.1rem; }
+      h2 { font-size: 1.6rem; }
+      .btn { padding: 12px 32px; font-size: 1.1rem; }
+      .nav-links { gap: 18px; } /* мобильное расстояние */
+    }
+    @media (max-width: 480px) {
+      .hero { padding: 60px 15px 50px; }
+      .lang-switch { display: none; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <!-- Блок 1: Header -->
-    <header>
-      <!-- 🔸 ВСТАВЬ СЮДА ИЗОБРАЖЕНИЕ ИЗ КОРНЯ 🔸 -->
-      <!-- Пример: если файл называется "hero.jpg", укажи src="hero.jpg" -->
-      <img src="hero.png" alt="Выход из сумрака" class="hero-image">
 
+  <!-- Меню -->
+  <header class="header">
+    <nav class="menu">
+      <a href="index.html" class="logo">Выход из сумрака</a>
+      <div class="nav-links">
+        <a href="privacy.html">Политика конфиденциальности</a>
+        <a href="faq.html">FAQ- Как это работает</a>
+        <a href="https://t.me/ваш_канал" target="_blank">TG-Канал</a>
+        <a href="#contacts">Контакты</a>
+          <!-- Добавляй сюда новые кнопки -->
+      </div>
+      <div class="lang-switch">
+        <a href="#" class="lang-btn active" data-lang="ru">RU</a>
+        <a href="#" class="lang-btn" data-lang="en">EN</a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container">
+
+    <!-- Блок 1 -->
+    <div class="hero">
+      <img src="hero.png" alt="Выход из сумрака">
       <h1>Как выйти из сумрака</h1>
       <p class="subtitle">Когда вокруг много информации, а ясности и действия нет.</p>
       <p class="note">Всё, что нужно — телефон и решение начать.</p>
-      <a href="http://t.me/LoveCoachBot_bot" class="btn">Выйти из сумрака</a>
-    </header>
+      <a href="https://t.me/ваш_бот" class="btn">Выйти из сумрака</a>
+    </div>
 
-    <!-- Остальные блоки -->
+    <!-- Блок 2 -->
     <section>
       <p>Ты уже многое пробовал. Читал статьи, смотрел видео, слушал советы.<br>
       А в какой-то момент стало непонятно, что делать и с чего начать.<br>
       Этот лендинг — чтобы вернуть ясность и показать первый шаг.</p>
     </section>
 
+    <!-- Блок 3 -->
     <section>
       <h2>Это не курс и не марафон</h2>
       <p>Нет часов видео, сложных методик и обещаний лёгких денег.<br>
@@ -131,6 +229,7 @@
       Это честный способ постепенно выходить из сумрака.</p>
     </section>
 
+    <!-- Блок 4 -->
     <section>
       <h2>Как это работает</h2>
       <ol>
@@ -140,6 +239,7 @@
       </ol>
     </section>
 
+    <!-- Блок 5 -->
     <section>
       <h2>Кому это полезно</h2>
       <ul>
@@ -151,6 +251,7 @@
       </ul>
     </section>
 
+    <!-- Блок 6 -->
     <section>
       <h2>Честно о процессе</h2>
       <p>Это не волшебная кнопка. Это работа, которая требует участия.<br>
@@ -158,10 +259,132 @@
       Всё начинается с первого шага — ты делаешь его прямо сейчас.</p>
     </section>
 
+    <!-- Блок 7 -->
     <section>
-      <a href="http://t.me/LoveCoachBot_bot" class="btn">Выйти из сумрака</a>
+      <a href="https://t.me/ваш_бот" class="btn">Выйти из сумрака</a>
       <p class="fine-print">Первый шаг всегда самый важный</p>
     </section>
+
   </div>
+
+  <!-- Подвал -->
+  <footer>
+    <div class="social-links">
+      <a href="https://vk.com/ваш_паблик" target="_blank">VK</a>
+      <a href="https://ok.ru/ваш_профиль" target="_blank">OK</a>
+      <a href="https://t.me/ваш_канал" target="_blank">Telegram</a>
+    </div>
+    <div class="footer-text">
+      © 2016–2025 | Заходи не бойся выходя не плачь.<br>
+      <a href="privacy.html">Политика конфиденциальности</a>
+    </div>
+  </footer>
+
+  <!-- JS для переключения языка -->
+  <script>
+    const content = {
+      ru: {
+        title: "Как выйти из сумрака",
+        subtitle: "Когда вокруг много информации, а ясности и действия нет.",
+        note: "Всё, что нужно — телефон и решение начать.",
+        btn: "Выйти из сумрака",
+        block2: "Ты уже многое пробовал. Читал статьи, смотрел видео, слушал советы.<br>А в какой-то момент стало непонятно, что делать и с чего начать.<br>Этот лендинг — чтобы вернуть ясность и показать первый шаг.",
+        block3_title: "Это не курс и не марафон",
+        block3_text: "Нет часов видео, сложных методик и обещаний лёгких денег.<br>Нет давления, таймеров и дедлайнов.<br>Это честный способ постепенно выходить из сумрака.",
+        block4_title: "Как это работает",
+        block4_list: ["Нажимаешь кнопку", "Telegram-бот ведёт тебя шаг за шагом", "Делаешь действия и видишь результат"],
+        block5_title: "Кому это полезно",
+        block5_list: [
+          "Если чувствуешь информационную перегрузку",
+          "Если хочешь понять, с чего начать",
+          "Если есть только телефон",
+          "Если устал от пустой мотивации",
+          "Если готов честно взглянуть на свои точки А и Б"
+        ],
+        block6_title: "Честно о процессе",
+        block6_text: "Это не волшебная кнопка. Это работа, которая требует участия.<br>Но она возвращает ясность, уверенность и направление.<br>Всё начинается с первого шага — ты делаешь его прямо сейчас.",
+        final_note: "Первый шаг всегда самый важный"
+      },
+      en: {
+        title: "How to Step Out of the Haze",
+        subtitle: "When there’s too much information, but no clarity or action.",
+        note: "All you need is a phone and the decision to begin.",
+        btn: "Step Out of the Haze",
+        block2: "You’ve tried many things. Read articles, watched videos, listened to advice.<br>At some point, it became unclear what to do or where to start.<br>This page exists to restore clarity and show your first step.",
+        block3_title: "This is not a course or a challenge",
+        block3_text: "No hours of videos, complex methods, or promises of easy money.<br>No pressure, timers, or deadlines.<br>This is an honest way to gradually step out of the haze.",
+        block4_title: "How it works",
+        block4_list: ["You click the button", "A Telegram bot guides you step by step", "You take action and see results"],
+        block5_title: "Who is this for?",
+        block5_list: [
+          "If you feel overwhelmed by information",
+          "If you want to understand where to start",
+          "If you only have a phone",
+          "If you’re tired of empty motivation",
+          "If you’re ready to honestly look at your Point A and Point B"
+        ],
+        block6_title: "A word of honesty",
+        block6_text: "This isn’t a magic button. It’s work that requires your participation.<br>But it brings back clarity, confidence, and direction.<br>Everything starts with the first step — and you take it right now.",
+        final_note: "The first step is always the most important"
+      }
+    };
+
+    function render(lang) {
+      const c = content[lang];
+      document.querySelector('.hero h1').innerHTML = c.title;
+      document.querySelector('.hero .subtitle').innerHTML = c.subtitle;
+      document.querySelector('.hero .note').innerHTML = c.note;
+      const heroBtn = document.querySelector('.hero .btn');
+      heroBtn.innerHTML = c.btn;
+      heroBtn.href = "https://t.me/ваш_бот";
+
+      const sections = document.querySelectorAll('section');
+      sections[0].innerHTML = `<p>${c.block2}</p>`;
+      sections[1].innerHTML = `<h2>${c.block3_title}</h2><p>${c.block3_text}</p>`;
+      
+      sections[2].innerHTML = `
+        <h2>${c.block4_title}</h2>
+        <ol>
+          <li>${c.block4_list[0]}</li>
+          <li>${c.block4_list[1]}</li>
+          <li>${c.block4_list[2]}</li>
+        </ol>
+      `;
+      
+      sections[3].innerHTML = `
+        <h2>${c.block5_title}</h2>
+        <ul>
+          <li>${c.block5_list[0]}</li>
+          <li>${c.block5_list[1]}</li>
+          <li>${c.block5_list[2]}</li>
+          <li>${c.block5_list[3]}</li>
+          <li>${c.block5_list[4]}</li>
+        </ul>
+      `;
+      
+      sections[4].innerHTML = `<h2>${c.block6_title}</h2><p>${c.block6_text}</p>`;
+      
+      const finalBtn = sections[5].querySelector('.btn');
+      finalBtn.innerHTML = c.btn;
+      finalBtn.href = "https://t.me/ваш_бот";
+      document.querySelector('.fine-print').innerHTML = c.final_note;
+
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+      localStorage.setItem('lang', lang);
+    }
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.preventDefault();
+        render(btn.dataset.lang);
+      });
+    });
+
+    const savedLang = localStorage.getItem('lang') || (navigator.language.startsWith('ru') ? 'ru' : 'en');
+    render(savedLang);
+  </script>
+
 </body>
 </html>
