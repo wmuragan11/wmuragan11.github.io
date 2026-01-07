@@ -19,7 +19,7 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       line-height: 1.6;
     }
-    /* === Прилипающее меню === */
+    /* === Меню, сдвинутое влево === */
     .header {
       position: sticky;
       top: 0;
@@ -29,12 +29,13 @@
       z-index: 100;
     }
     .menu {
-      max-width: 800px;
+      max-width: 1200px;
       margin: 0 auto;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-start;
       align-items: center;
       height: 60px;
+      gap: 30px;
     }
     .logo {
       font-weight: bold;
@@ -42,10 +43,9 @@
       color: var(--accent);
       text-decoration: none;
     }
-    /* === КНОПКИ МЕНЮ — расстояние здесь === */
     .nav-links {
       display: flex;
-      gap: 12px; /* ← расстояние между кнопками */
+      gap: 20px;
     }
     .nav-links a {
       color: #aaa;
@@ -56,8 +56,6 @@
     .nav-links a:hover {
       color: var(--accent);
     }
-
-    /* === Переключатель языка === */
     .lang-switch {
       display: flex;
       gap: 12px;
@@ -72,7 +70,7 @@
       color: var(--accent);
     }
 
-    /* === Основной контент === */
+    /* === Контент === */
     .container {
       max-width: 800px;
       margin: 0 auto;
@@ -89,16 +87,16 @@
       border-radius: 8px;
       margin-bottom: 40px;
     }
-    .hero h1 {
+    h1 {
       font-size: 2.5rem;
       margin-bottom: 16px;
     }
-    .hero .subtitle {
+    .subtitle {
       font-size: 1.3rem;
       margin-bottom: 20px;
       opacity: 0.95;
     }
-    .hero .note {
+    .note {
       font-size: 1.1rem;
       margin-bottom: 36px;
       opacity: 0.85;
@@ -155,9 +153,6 @@
       text-align: center;
       margin-top: 80px;
     }
-    .social-links {
-      margin-bottom: 15px;
-    }
     .social-links a {
       color: #777;
       margin: 0 16px;
@@ -171,30 +166,24 @@
 
     /* === Адаптив === */
     @media (max-width: 768px) {
-      .menu { padding: 0 15px; }
-      .hero h1 { font-size: 2.1rem; }
+      h1 { font-size: 2.1rem; }
       h2 { font-size: 1.6rem; }
       .btn { padding: 12px 32px; font-size: 1.1rem; }
-      .nav-links { gap: 18px; } /* мобильное расстояние */
     }
-    @media (max-width: 480px) {
-      .hero { padding: 60px 15px 50px; }
+    @media (max-width: 600px) {
       .lang-switch { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Меню -->
+  <!-- Меню с переключателем языка -->
   <header class="header">
     <nav class="menu">
-      <a href="index.html" class="logo">Главная</a>
+      <a href="index.html" class="logo">Выход из сумрака</a>
       <div class="nav-links">
-        <a href="privacy.html">Политика </a>
-        <a href="faq.html">FAQ</a>
-        <a href="https://t.me/ваш_канал" target="_blank">TG</a>
-       
-          <!-- Добавляй сюда новые кнопки -->
+        <a href="privacy.html">Политика</a>
+        <a href="faq.html">Как это работает</a>
       </div>
       <div class="lang-switch">
         <a href="#" class="lang-btn active" data-lang="ru">RU</a>
@@ -204,45 +193,33 @@
   </header>
 
   <div class="container">
-
-    <!-- Блок 1 -->
     <div class="hero">
       <img src="hero.png" alt="Выход из сумрака">
-      <h1>Как выйти из сумрака</h1>
-      <p class="subtitle">Когда вокруг много информации, а ясности и действия нет.</p>
-      <p class="note">Всё, что нужно — телефон и решение начать.</p>
-      <a href="https://t.me/ваш_бот" class="btn">Выйти из сумрака</a>
+      <h1 id="title">Как выйти из сумрака</h1>
+      <p class="subtitle" id="subtitle">Когда вокруг много информации, а ясности и действия нет.</p>
+      <p class="note" id="note">Всё, что нужно — телефон и решение начать.</p>
+      <a href="https://t.me/ваш_бот" class="btn" id="btn-main">Выйти из сумрака</a>
     </div>
 
-    <!-- Блок 2 -->
+    <section><p id="block2">Ты уже многое пробовал. Читал статьи, смотрел видео, слушал советы.<br>А в какой-то момент стало непонятно, что делать и с чего начать.<br>Этот лендинг — чтобы вернуть ясность и показать первый шаг.</p></section>
+
     <section>
-      <p>Ты уже многое пробовал. Читал статьи, смотрел видео, слушал советы.<br>
-      А в какой-то момент стало непонятно, что делать и с чего начать.<br>
-      Этот лендинг — чтобы вернуть ясность и показать первый шаг.</p>
+      <h2 id="block3-title">Это не курс и не марафон</h2>
+      <p id="block3-text">Нет часов видео, сложных методик и обещаний лёгких денег.<br>Нет давления, таймеров и дедлайнов.<br>Это честный способ постепенно выходить из сумрака.</p>
     </section>
 
-    <!-- Блок 3 -->
     <section>
-      <h2>Это не курс и не марафон</h2>
-      <p>Нет часов видео, сложных методик и обещаний лёгких денег.<br>
-      Нет давления, таймеров и дедлайнов.<br>
-      Это честный способ постепенно выходить из сумрака.</p>
-    </section>
-
-    <!-- Блок 4 -->
-    <section>
-      <h2>Как это работает</h2>
-      <ol>
+      <h2 id="block4-title">Как это работает</h2>
+      <ol id="block4-list">
         <li>Нажимаешь кнопку</li>
         <li>Telegram-бот ведёт тебя шаг за шагом</li>
         <li>Делаешь действия и видишь результат</li>
       </ol>
     </section>
 
-    <!-- Блок 5 -->
     <section>
-      <h2>Кому это полезно</h2>
-      <ul>
+      <h2 id="block5-title">Кому это полезно</h2>
+      <ul id="block5-list">
         <li>Если чувствуешь информационную перегрузку</li>
         <li>Если хочешь понять, с чего начать</li>
         <li>Если есть только телефон</li>
@@ -251,23 +228,17 @@
       </ul>
     </section>
 
-    <!-- Блок 6 -->
     <section>
-      <h2>Честно о процессе</h2>
-      <p>Это не волшебная кнопка. Это работа, которая требует участия.<br>
-      Но она возвращает ясность, уверенность и направление.<br>
-      Всё начинается с первого шага — ты делаешь его прямо сейчас.</p>
+      <h2 id="block6-title">Честно о процессе</h2>
+      <p id="block6-text">Это не волшебная кнопка. Это работа, которая требует участия.<br>Но она возвращает ясность, уверенность и направление.<br>Всё начинается с первого шага — ты делаешь его прямо сейчас.</p>
     </section>
 
-    <!-- Блок 7 -->
     <section>
-      <a href="https://t.me/ваш_бот" class="btn">Выйти из сумрака</a>
-      <p class="fine-print">Первый шаг всегда самый важный</p>
+      <a href="https://t.me/ваш_бот" class="btn" id="btn-final">Выйти из сумрака</a>
+      <p class="fine-print" id="fine-print">Первый шаг всегда самый важный</p>
     </section>
-
   </div>
 
-  <!-- Подвал -->
   <footer>
     <div class="social-links">
       <a href="https://vk.com/ваш_паблик" target="_blank">VK</a>
@@ -275,12 +246,12 @@
       <a href="https://t.me/ваш_канал" target="_blank">Telegram</a>
     </div>
     <div class="footer-text">
-      © 2016–2025 | Заходи не бойся выходя не плачь.<br>
+      © 2016–2025 | Разработка и продвижение сайтов<br>
       <a href="privacy.html">Политика конфиденциальности</a>
     </div>
   </footer>
 
-  <!-- JS для переключения языка -->
+  <!-- Языковой переключатель -->
   <script>
     const content = {
       ru: {
@@ -303,7 +274,7 @@
         ],
         block6_title: "Честно о процессе",
         block6_text: "Это не волшебная кнопка. Это работа, которая требует участия.<br>Но она возвращает ясность, уверенность и направление.<br>Всё начинается с первого шага — ты делаешь его прямо сейчас.",
-        final_note: "Первый шаг всегда самый важный"
+        fine_print: "Первый шаг всегда самый важный"
       },
       en: {
         title: "How to Step Out of the Haze",
@@ -325,56 +296,53 @@
         ],
         block6_title: "A word of honesty",
         block6_text: "This isn’t a magic button. It’s work that requires your participation.<br>But it brings back clarity, confidence, and direction.<br>Everything starts with the first step — and you take it right now.",
-        final_note: "The first step is always the most important"
+        fine_print: "The first step is always the most important"
       }
     };
 
+    function setText(id, text) {
+      const el = document.getElementById(id);
+      if (el) el.innerHTML = text;
+    }
+
     function render(lang) {
       const c = content[lang];
-      document.querySelector('.hero h1').innerHTML = c.title;
-      document.querySelector('.hero .subtitle').innerHTML = c.subtitle;
-      document.querySelector('.hero .note').innerHTML = c.note;
-      const heroBtn = document.querySelector('.hero .btn');
-      heroBtn.innerHTML = c.btn;
-      heroBtn.href = "https://t.me/ваш_бот";
+      setText('title', c.title);
+      setText('subtitle', c.subtitle);
+      setText('note', c.note);
+      setText('btn-main', c.btn);
+      setText('btn-final', c.btn);
+      setText('block2', c.block2);
+      setText('block3-title', c.block3_title);
+      setText('block3-text', c.block3_text);
+      setText('block4-title', c.block4_title);
+      setText('block4-list', `
+        <li>${c.block4_list[0]}</li>
+        <li>${c.block4_list[1]}</li>
+        <li>${c.block4_list[2]}</li>
+      `);
+      setText('block5-title', c.block5_title);
+      setText('block5-list', `
+        <li>${c.block5_list[0]}</li>
+        <li>${c.block5_list[1]}</li>
+        <li>${c.block5_list[2]}</li>
+        <li>${c.block5_list[3]}</li>
+        <li>${c.block5_list[4]}</li>
+      `);
+      setText('block6-title', c.block6_title);
+      setText('block6-text', c.block6_text);
+      setText('fine-print', c.fine_print);
 
-      const sections = document.querySelectorAll('section');
-      sections[0].innerHTML = `<p>${c.block2}</p>`;
-      sections[1].innerHTML = `<h2>${c.block3_title}</h2><p>${c.block3_text}</p>`;
-      
-      sections[2].innerHTML = `
-        <h2>${c.block4_title}</h2>
-        <ol>
-          <li>${c.block4_list[0]}</li>
-          <li>${c.block4_list[1]}</li>
-          <li>${c.block4_list[2]}</li>
-        </ol>
-      `;
-      
-      sections[3].innerHTML = `
-        <h2>${c.block5_title}</h2>
-        <ul>
-          <li>${c.block5_list[0]}</li>
-          <li>${c.block5_list[1]}</li>
-          <li>${c.block5_list[2]}</li>
-          <li>${c.block5_list[3]}</li>
-          <li>${c.block5_list[4]}</li>
-        </ul>
-      `;
-      
-      sections[4].innerHTML = `<h2>${c.block6_title}</h2><p>${c.block6_text}</p>`;
-      
-      const finalBtn = sections[5].querySelector('.btn');
-      finalBtn.innerHTML = c.btn;
-      finalBtn.href = "https://t.me/ваш_бот";
-      document.querySelector('.fine-print').innerHTML = c.final_note;
-
+      // Обновляем активный язык
       document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.lang === lang);
       });
+
+      // Сохраняем выбор
       localStorage.setItem('lang', lang);
     }
 
+    // Переключение по клику
     document.querySelectorAll('.lang-btn').forEach(btn => {
       btn.addEventListener('click', e => {
         e.preventDefault();
@@ -382,15 +350,10 @@
       });
     });
 
+    // Загрузка при старте
     const savedLang = localStorage.getItem('lang') || (navigator.language.startsWith('ru') ? 'ru' : 'en');
     render(savedLang);
   </script>
 
 </body>
 </html>
-
-
-
-
-
-
