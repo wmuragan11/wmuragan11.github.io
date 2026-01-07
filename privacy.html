@@ -6,37 +6,81 @@
   <title>Политика конфиденциальности — Выход из сумрака</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0d0f14;
+      --text: #e6e6e6;
+      --accent: #f5c77a;
+      --menu-bg: #0a0c0f;
+      --border: #222;
+    }
     body {
-      background-color: #0d0f14;
-      color: #e6e6e6;
+      background-color: var(--bg);
+      color: var(--text);
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       line-height: 1.7;
-    }
-    /* Меню — точно такое же */
-    .top-menu {
-      background: #0a0c0f;
-      padding: 12px 20px;
+      min-height: 100vh;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #222;
+      flex-direction: column;
     }
-    .logo { font-weight: bold; color: #f5c77a; text-decoration: none; font-size: 1.2rem; }
+    .header {
+      position: sticky;
+      top: 0;
+      background: var(--menu-bg);
+      border-bottom: 1px solid var(--border);
+      padding: 0 10px;
+      z-index: 100;
+    }
+    .menu {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      height: 60px;
+      gap: 30px;
+    }
+    .logo {
+      font-weight: bold;
+      font-size: 1.25rem;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
     .nav-links a {
       color: #aaa;
       text-decoration: none;
-      margin-left: 20px;
+      font-size: 0.95rem;
+      transition: color 0.2s;
     }
-    .nav-links a:hover { color: #f5c77a; }
-    .lang-switch { display: none; } /* На privacy.html язык не переключаем */
-
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--accent);
+    }
+    .lang-switch-inline {
+      display: flex;
+      gap: 10px;
+      margin: 0 8px;
+    }
+    .lang-switch-inline a {
+      color: #555;
+      font-size: 0.9rem;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .lang-switch-inline a.active {
+      color: var(--accent);
+    }
     .container {
       max-width: 800px;
-      margin: 40px auto;
+      margin: 60px auto;
       padding: 0 20px;
+      flex: 1;
     }
     h1 {
-      color: #f5c77a;
+      color: var(--accent);
       margin-bottom: 30px;
       font-size: 2rem;
     }
@@ -52,82 +96,111 @@
       margin-bottom: 8px;
     }
     a {
-      color: #f5c77a;
+      color: var(--accent);
       text-decoration: underline;
     }
-
     footer {
       background: #07080a;
       color: #777;
       font-size: 0.9rem;
       padding: 30px 20px;
-      margin-top: 60px;
       text-align: center;
+      margin-top: 80px;
     }
     .social-links a {
       color: #777;
-      margin: 0 12px;
+      margin: 0 16px;
       text-decoration: none;
     }
-    .footer-text {
-      margin-top: 15px;
-    }
     .footer-text a {
-      color: #f5c77a;
+      color: var(--accent);
       text-decoration: underline;
       font-size: 0.85rem;
     }
-    @media (max-width: 600px) {
-      .top-menu { flex-direction: column; gap: 10px; text-align: center; }
-      .nav-links { margin-top: 8px; }
-      .nav-links a { margin: 0 10px; }
+    @media (max-width: 768px) {
+      .container { margin: 40px auto; }
     }
+    /* УБРАНО: @media (max-width: 600px) { .lang-switch-inline { display: none; } } */
   </style>
 </head>
 <body>
 
-  <!-- То же меню -->
-  <nav class="top-menu">
-    <a href="index.html" class="logo">Выход из сумрака</a>
-    <div class="nav-links">
-      <a href="privacy.html">Политика конфиденциальности</a>
-    </div>
-    <div class="lang-switch">
-      <a href="#" class="lang-btn active" data-lang="ru">RU</a>
-      <a href="#" class="lang-btn" data-lang="en">EN</a>
-    </div>
-  </nav>
+  <header class="header">
+    <nav class="menu">
+      <a href="index.html" class="logo">Главная</a>
+      <div class="nav-links">
+        <div class="lang-switch-inline">
+          <a href="#" class="lang-btn active" data-lang="ru">RU</a>
+          <a href="#" class="lang-btn" data-lang="en">EN</a>
+        </div>
+        <a href="privacy.html" class="active">Политика</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+    </nav>
+  </header>
 
   <div class="container">
-    <h1>Политика конфиденциальности</h1>
+    <h1 id="page-title">Политика конфиденциальности</h1>
 
-    <p>Сайт и связанные с ним сервисы (включая Telegram-бота «Выход из сумрака») созданы с уважением к вашей личной границе и праву на приватность.</p>
+    <div id="content-ru">
+      <p>Сайт и связанные с ним сервисы (включая Telegram-бота «Выход из сумрака») созданы с уважением к вашей личной границе и праву на приватность.</p>
 
-    <p><strong>1. Сбор данных через лендинг</strong><br>
-    На этом сайте не используются системы аналитики, куки или скрипты отслеживания. Мы не собираем IP-адреса, не храним историю посещений и не передаём информацию третьим лицам.</p>
+      <p><strong>1. Сбор данных через лендинг</strong><br>
+      На этом сайте не используются системы аналитики, куки или скрипты отслеживания. Мы не собираем IP-адреса, не храним историю посещений и не передаём информацию третьим лицам.</p>
 
-    <p><strong>2. Данные в Telegram-боте</strong><br>
-    Если вы переходите в Telegram-бот, вы добровольно предоставляете имя, Telegram-ник и, при запросе, — цель, email и телефон. Эти данные используются исключительно для:
-    <ul>
-      <li>персонализации ежедневных заданий,</li>
-      <li>отправки напоминаний,</li>
-      <li>поддержки внутренней системы прогресса (Synops).</li>
-    </ul>
-    Ваши сообщения в боте не публикуются и не передаются вне системы.</p>
+      <p><strong>2. Данные в Telegram-боте</strong><br>
+      Если вы переходите в Telegram-бот, вы добровольно предоставляете имя, Telegram-ник и, при запросе, — цель, email и телефон. Эти данные используются исключительно для:
+      <ul>
+        <li>персонализации ежедневных заданий,</li>
+        <li>отправки напоминаний,</li>
+        <li>поддержки внутренней системы прогресса (Synops).</li>
+      </ul>
+      Ваши сообщения в боте не публикуются и не передаются вне системы.</p>
 
-    <p><strong>3. Ваши права</strong><br>
-    Вы в любой момент можете:
-    <ul>
-      <li>отказаться от участия,</li>
-      <li>запросить удаление своих данных,</li>
-      <li>отписаться от уведомлений.</li>
-    </ul>
-    Для этого достаточно написать в Telegram: <a href="https://t.me/ваш_ник">@ваш_ник</a>.</p>
+      <p><strong>3. Ваши права</strong><br>
+      Вы в любой момент можете:
+      <ul>
+        <li>отказаться от участия,</li>
+        <li>запросить удаление своих данных,</li>
+        <li>отписаться от уведомлений.</li>
+      </ul>
+      Для этого достаточно написать в Telegram: <a href="https://t.me/ваш_ник">@ваш_ник</a>.</p>
 
-    <p><strong>4. Изменения</strong><br>
-    Мы оставляем за собой право обновлять эту политику. Все изменения вступают в силу немедленно после публикации на этой странице.</p>
+      <p><strong>4. Изменения</strong><br>
+      Мы оставляем за собой право обновлять эту политику. Все изменения вступают в силу немедленно после публикации на этой странице.</p>
 
-    <p>Дата последнего обновления: 7 января 2026 г.</p>
+      <p>Дата последнего обновления: 7 января 2026 г.</p>
+    </div>
+
+    <div id="content-en" style="display:none;">
+      <p>This website and related services (including the “Step Out of the Haze” Telegram bot) are created with respect for your personal boundaries and right to privacy.</p>
+
+      <p><strong>1. Data collection via the landing page</strong><br>
+      This site does not use analytics, cookies, or tracking scripts. We do not collect IP addresses, do not store visit history, and do not share information with third parties.</p>
+
+      <p><strong>2. Data in the Telegram bot</strong><br>
+      If you enter the Telegram bot, you voluntarily provide your name, Telegram username, and, if requested, your goal, email, and phone number. This data is used exclusively for:
+      <ul>
+        <li>personalizing daily tasks,</li>
+        <li>sending reminders,</li>
+        <li>supporting the internal progress system (Synops).</li>
+      </ul>
+      Your messages in the bot are not published or shared outside the system.</p>
+
+      <p><strong>3. Your rights</strong><br>
+      You may at any time:
+      <ul>
+        <li>opt out of participation,</li>
+        <li>request deletion of your data,</li>
+        <li>unsubscribe from notifications.</li>
+      </ul>
+      Simply message us on Telegram: <a href="https://t.me/your_nickname">@your_nickname</a>.</p>
+
+      <p><strong>4. Changes</strong><br>
+      We reserve the right to update this policy. All changes take effect immediately upon publication on this page.</p>
+
+      <p>Last updated: January 7, 2026</p>
+    </div>
   </div>
 
   <footer>
@@ -137,9 +210,33 @@
       <a href="https://t.me/ваш_канал" target="_blank">Telegram</a>
     </div>
     <div class="footer-text">
-      © 2016–2025 | Разработка и продвижение сайтов
+      © 2016–2025 | Заходи не бойся выходи не плачь<br>
+      <a href="privacy.html">Политика конфиденциальности</a>
     </div>
   </footer>
+
+  <script>
+    function toggleContent(lang) {
+      document.getElementById('content-ru').style.display = lang === 'ru' ? 'block' : 'none';
+      document.getElementById('content-en').style.display = lang === 'en' ? 'block' : 'none';
+      document.getElementById('page-title').textContent = lang === 'ru' ? 'Политика конфиденциальности' : 'Privacy Policy';
+      
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+      localStorage.setItem('lang', lang);
+    }
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.preventDefault();
+        toggleContent(btn.dataset.lang);
+      });
+    });
+
+    const savedLang = localStorage.getItem('lang') || (navigator.language.startsWith('ru') ? 'ru' : 'en');
+    toggleContent(savedLang);
+  </script>
 
 </body>
 </html>
