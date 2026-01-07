@@ -27,16 +27,17 @@
       top: 0;
       background: var(--menu-bg);
       border-bottom: 1px solid var(--border);
-      padding: 0 20px;
+      padding: 0 10px;
       z-index: 100;
     }
     .menu {
       max-width: 1200px;
       margin: 0 auto;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-start;
       align-items: center;
       height: 60px;
+      gap: 30px;
     }
     .logo {
       font-weight: bold;
@@ -46,7 +47,8 @@
     }
     .nav-links {
       display: flex;
-      gap: 24px;
+      gap: 20px;
+      align-items: center;
     }
     .nav-links a {
       color: #aaa;
@@ -55,6 +57,20 @@
       transition: color 0.2s;
     }
     .nav-links a:hover, .nav-links a.active {
+      color: var(--accent);
+    }
+    .lang-switch-inline {
+      display: flex;
+      gap: 10px;
+      margin: 0 8px;
+    }
+    .lang-switch-inline a {
+      color: #555;
+      font-size: 0.9rem;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .lang-switch-inline a.active {
       color: var(--accent);
     }
     .container {
@@ -101,9 +117,6 @@
       text-align: center;
       margin-top: 80px;
     }
-    .social-links {
-      margin-bottom: 15px;
-    }
     .social-links a {
       color: #777;
       margin: 0 16px;
@@ -117,85 +130,152 @@
     @media (max-width: 768px) {
       h1 { font-size: 1.8rem; }
       h2 { font-size: 1.35rem; }
-      .menu { padding: 0 15px; }
-      .nav-links { gap: 18px; }
     }
+    /* УБРАНО: @media (max-width: 600px) { .lang-switch-inline { display: none; } } */
   </style>
 </head>
 <body>
 
   <header class="header">
     <nav class="menu">
-      <a href="index.html" class="logo">Выход из сумрака</a>
+      <a href="index.html" class="logo">Главная</a>
       <div class="nav-links">
+        <div class="lang-switch-inline">
+          <a href="#" class="lang-btn active" data-lang="ru">RU</a>
+          <a href="#" class="lang-btn" data-lang="en">EN</a>
+        </div>
         <a href="privacy.html">Политика</a>
-        <a href="faq.html" class="active">Как это работает</a>
+        <a href="faq.html" class="active">FAQ</a>
       </div>
     </nav>
   </header>
 
   <div class="container">
-    <h1>Как это работает</h1>
+    <h1 id="page-title">Как это работает</h1>
 
-    <p>Это не курс. Не марафон. Не мотивационный тренинг.</p>
-    <p>Это <strong>ежедневная практика</strong>, которая помогает выйти из информационного шума и вернуть себе ясность, направление и действия.</p>
+    <div id="content-ru">
+      <p>Это не курс. Не марафон. Не мотивационный тренинг.</p>
+      <p>Это <strong>ежедневная практика</strong>, которая помогает выйти из информационного шума и вернуть себе ясность, направление и действия.</p>
 
-    <h2>Кто это для?</h2>
-    <p>Для тех, кто:</p>
-    <ul>
-      <li>устал от бесконечных статей, видео и советов</li>
-      <li>чувствует, что «застрял»</li>
-      <li>хочет начать, но не знает — с чего</li>
-      <li>готов честно взглянуть на себя</li>
-    </ul>
+      <h2>Кто это для?</h2>
+      <p>Для тех, кто:</p>
+      <ul>
+        <li>устал от бесконечных статей, видео и советов</li>
+        <li>чувствует, что «застрял»</li>
+        <li>хочет начать, но не знает — с чего</li>
+        <li>готов честно взглянуть на себя</li>
+      </ul>
 
-    <h2>Как устроен процесс?</h2>
-    <p>Каждый <strong>будний день (пн–пт)</strong> в 9:00 вы получаете одно простое задание в Telegram.</p>
-    <p>Задание занимает <strong>2–10 минут</strong>. Оно не требует специальных знаний — только честного ответа или действия.</p>
-    <p>Выходные (сб–вс) — время отдыха. Без заданий. Без штрафов.</p>
+      <h2>Как устроен процесс?</h2>
+      <p>Каждый <strong>будний день (пн–пт)</strong> в 9:00 вы получаете одно простое задание в Telegram.</p>
+      <p>Задание занимает <strong>2–10 минут</strong>. Оно не требует специальных знаний — только честного ответа или действия.</p>
+      <p>Выходные (сб–вс) — время отдыха. Без заданий. Без штрафов.</p>
 
-    <h2>Что такое Synops?</h2>
-    <p>Synops — это <strong>внутренняя валюта прогресса</strong>. Она помогает видеть, что вы идёте вперёд.</p>
-    <ul>
-      <li>За выполненное задание: <strong>+10 Synops</strong></li>
-      <li>За пропуск одного дня — ничего не снимается</li>
-      <li>Если пропустить <strong>два будних дня подряд</strong> — <strong>–15 Synops</strong></li>
-    </ul>
-    <p>Это не наказание. Это способ мягко напомнить: «Ты здесь. Ты можешь вернуться».</p>
+      <h2>Что такое Synops?</h2>
+      <p>Synops — это <strong>внутренняя валюта прогресса</strong>. Она помогает видеть, что вы идёте вперёд.</p>
+      <ul>
+        <li>За выполненное задание: <strong>+10 Synops</strong></li>
+        <li>За пропуск одного дня — ничего не снимается</li>
+        <li>Если пропустить <strong>два будних дня подряд</strong> — <strong>–15 Synops</strong></li>
+      </ul>
+      <p>Это не наказание. Это способ мягко напомнить: «Ты здесь. Ты можешь вернуться».</p>
 
-    <h2>Как подтвердить выполнение?</h2>
-    <p>Бот принимает:</p>
-    <ul>
-      <li><strong>Текстовый ответ</strong> — просто напишите в чат</li>
-      <li><strong>Скриншот или фото</strong> — если задание требует (например, «сделай фото своего рабочего стола»)</li>
-    </ul>
-    <p>Нет сложных форм. Нет загрузок файлов. Только Telegram.</p>
+      <h2>Как подтвердить выполнение?</h2>
+      <p>Бот принимает:</p>
+      <ul>
+        <li><strong>Текстовый ответ</strong> — просто напишите в чат</li>
+        <li><strong>Скриншот или фото</strong> — если задание требует</li>
+      </ul>
+      <p>Нет сложных форм. Нет загрузок файлов. Только Telegram.</p>
 
-    <h2>Сколько стоит?</h2>
-    <div class="note">
-      Участие <strong>полностью бесплатное</strong>. Нет скрытых платежей, подписок или «премиум-доступа».
+      <h2>Сколько стоит?</h2>
+      <div class="note">
+        Участие <strong>полностью бесплатное</strong>. Нет скрытых платежей, подписок или «премиум-доступа».
+      </div>
+      <p>Это практика, а не продукт. Цель — помочь, а не продать.</p>
+
+      <h2>Сколько длится?</h2>
+      <p>Год. Точнее — <strong>261 рабочий день</strong> (примерно 5 дней × 52 недели).</p>
+      <p>Каждый месяц посвящён новой теме: от осознания до интеграции изменений.</p>
+      <p>Вы можете выйти в любой момент — без штрафов, без обязательств.</p>
+
+      <h2>Что, если я пропущу день?</h2>
+      <p>Это нормально. Жизнь бывает сложной.</p>
+      <p>Один пропуск — ничего не снимается.</p>
+      <p>Если пропустите два дня подряд — вы получите уведомление и –15 Synops. Но вы всегда можете продолжить.</p>
+
+      <h2>Зачем это всё?</h2>
+      <p>Чтобы:</p>
+      <ul>
+        <li>перестать гнаться за информацией</li>
+        <li>начать <strong>действовать</strong>, а не только думать</li>
+        <li>обратить внимание на то, что действительно важно</li>
+        <li>найти свою внутреннюю опору</li>
+      </ul>
+      <p>Это не волшебная кнопка. Это путь. И он начинается с одного шага.</p>
     </div>
-    <p>Это практика, а не продукт. Цель — помочь, а не продать.</p>
 
-    <h2>Сколько длится?</h2>
-    <p>Год. Точнее — <strong>261 рабочий день</strong> (примерно 5 дней × 52 недели).</p>
-    <p>Каждый месяц посвящён новой теме: от осознания до интеграции изменений.</p>
-    <p>Вы можете выйти в любой момент — без штрафов, без обязательств.</p>
+    <div id="content-en" style="display:none;">
+      <p>This is not a course. Not a challenge. Not a motivational program.</p>
+      <p>It’s a <strong>daily practice</strong> that helps you step out of information overload and restore clarity, direction, and action.</p>
 
-    <h2>Что, если я пропущу день?</h2>
-    <p>Это нормально. Жизнь бывает сложной.</p>
-    <p>Один пропуск — ничего не снимается.</p>
-    <p>Если пропустите два дня подряд — вы получите уведомление и –15 Synops. Но вы всегда можете продолжить.</p>
+      <h2>Who is it for?</h2>
+      <p>For those who:</p>
+      <ul>
+        <li>are tired of endless articles, videos, and advice</li>
+        <li>feel “stuck”</li>
+        <li>want to start but don’t know how</li>
+        <li>are ready to look at themselves honestly</li>
+      </ul>
 
-    <h2>Зачем это всё?</h2>
-    <p>Чтобы:</p>
-    <ul>
-      <li>перестать гнаться за информацией</li>
-      <li>начать <strong>действовать</strong>, а не только думать</li>
-      <li>обратить внимание на то, что действительно важно</li>
-      <li>найти свою внутреннюю опору</li>
-    </ul>
-    <p>Это не волшебная кнопка. Это путь. И он начинается с одного шага.</p>
+      <h2>How does it work?</h2>
+      <p>Every <strong>weekday (Mon–Fri)</strong> at 9:00 you’ll receive one simple task in Telegram.</p>
+      <p>The task takes <strong>2–10 minutes</strong>. No special knowledge needed — just an honest response or action.</p>
+      <p>Weekends (Sat–Sun) are for rest. No tasks. No penalties.</p>
+
+      <h2>What are Synops?</h2>
+      <p>Synops are your <strong>internal progress currency</strong>. They help you see that you’re moving forward.</p>
+      <ul>
+        <li>For a completed task: <strong>+10 Synops</strong></li>
+        <li>One missed day — no penalty</li>
+        <li>If you miss <strong>two weekdays in a row</strong> — <strong>–15 Synops</strong></li>
+      </ul>
+      <p>This isn’t punishment. It’s a gentle reminder: “You’re here. You can come back.”</p>
+
+      <h2>How to confirm completion?</h2>
+      <p>The bot accepts:</p>
+      <ul>
+        <li><strong>Text response</strong> — just type in the chat</li>
+        <li><strong>Screenshot or photo</strong> — if the task requires it</li>
+      </ul>
+      <p>No complex forms. No file uploads. Just Telegram.</p>
+
+      <h2>How much does it cost?</h2>
+      <div class="note">
+        Participation is <strong>completely free</strong>. No hidden payments, subscriptions, or “premium access”.
+      </div>
+      <p>This is a practice, not a product. The goal is to help — not to sell.</p>
+
+      <h2>How long does it last?</h2>
+      <p>One year. Precisely — <strong>261 weekdays</strong> (~5 days × 52 weeks).</p>
+      <p>Each month focuses on a new theme: from awareness to integration.</p>
+      <p>You can leave anytime — no penalties, no obligations.</p>
+
+      <h2>What if I miss a day?</h2>
+      <p>That’s normal. Life gets tough.</p>
+      <p>One miss — no penalty.</p>
+      <p>If you miss two days in a row — you’ll get a notification and –15 Synops. But you can always continue.</p>
+
+      <h2>Why all this?</h2>
+      <p>To:</p>
+      <ul>
+        <li>stop chasing information</li>
+        <li>start <strong>acting</strong>, not just thinking</li>
+        <li>focus on what truly matters</li>
+        <li>find your inner support</li>
+      </ul>
+      <p>This isn’t a magic button. It’s a path. And it starts with one step.</p>
+    </div>
   </div>
 
   <footer>
@@ -205,10 +285,33 @@
       <a href="https://t.me/ваш_канал" target="_blank">Telegram</a>
     </div>
     <div class="footer-text">
-      © 2016–2025 | Разработка и продвижение сайтов<br>
+      © 2016–2025 | Заходи не бойся выходи не плачь<br>
       <a href="privacy.html">Политика конфиденциальности</a>
     </div>
   </footer>
+
+  <script>
+    function toggleContent(lang) {
+      document.getElementById('content-ru').style.display = lang === 'ru' ? 'block' : 'none';
+      document.getElementById('content-en').style.display = lang === 'en' ? 'block' : 'none';
+      document.getElementById('page-title').textContent = lang === 'ru' ? 'Как это работает' : 'How it works';
+      
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+      localStorage.setItem('lang', lang);
+    }
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.preventDefault();
+        toggleContent(btn.dataset.lang);
+      });
+    });
+
+    const savedLang = localStorage.getItem('lang') || (navigator.language.startsWith('ru') ? 'ru' : 'en');
+    toggleContent(savedLang);
+  </script>
 
 </body>
 </html>
